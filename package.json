@@ -1,0 +1,11 @@
+{
+  "name": "foodjournal",
+  "version": "1.0.0",
+  "description": "a regular food journal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miguel Cuevas",
+  "license": "ISC"
+}

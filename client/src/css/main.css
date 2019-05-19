@@ -1,0 +1,24 @@
+body {
+    background: url('../img/bg-image.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.main-container {
+    background-color: #F7FFF7; 
+}
+
+h1 {
+    color: #FF6B6B;
+}
+
+.logo {
+    margin: 2em 0 0 1em;
+}
+
+.loginLbl {
+    font-size: small;
+    color: #9CAFB7;
+}
