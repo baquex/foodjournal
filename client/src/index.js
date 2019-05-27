@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/main.css';
 //COMPONENTS
 import Home from './components/Home';
-import Login from './components/login/login'
+//import Login from './components/login/login'
 
 
 const Root = () => (

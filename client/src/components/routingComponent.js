@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Calendar from './calendar/Calendar';
 import Login from './login/login';
-import Home from './Home'
+//import Home from './Home'
 
 const routingComponent = () => (
     <main>

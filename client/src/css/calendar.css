@@ -16,4 +16,19 @@
 td:hover {
   background: lightgreen; }
 
+/* 
+@media screen and (max-width: 768px) {
+  .yr-nxt-to-month {
+    display: none;
+  }
+
+  .container{
+    min-width: 100% !important;
+  } 
+
+  .table {
+    max-width: 95%;
+  }
+} */
+
 
