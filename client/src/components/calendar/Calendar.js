@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Day from '../day/day';
+//import Day from '../day/day';
 import { Table } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import * as actions from '../../redux/actions';
@@ -73,29 +73,15 @@ class Calendar extends Component {
 	}
 
 	changeMonth(direction){
-		let dir = direction;
-		let mesActual = this.state.mesActual;
-		let yr = this.state.yr;
-		
-		if (dir === 'left'){
-			if (this.state.mesActual === 0)
-				this.setState({mesActual: 11, yr: yr-1},calc_fdp_dim)
-			else
-				this.setState({mesActual: mesActual-1},calc_fdp_dim)
-		}
-		else if (dir === 'right'){
-			if (this.state.mesActual === 11)
-				this.setState({mesActual: 0, yr: yr+1},calc_fdp_dim)
-			else
-				this.setState({mesActual: mesActual+1},calc_fdp_dim)
-		}
 
+		this.props.change_month(direction);
 	
-		function calc_fdp_dim (){	
-			let fdp = new Date(this.state.yr,this.state.mesActual,0).getDay(); // 0 = Monday
-			let daysInMonth = 32 - new Date(this.state.yr,this.state.mesActual,32).getDate(); //either 30 or 31
-			this.setState({firstDayPosition: fdp, daysInMonth: daysInMonth},this.fillMonth);
-		}
+		this.props.calc_new_month();
+		
+		this.setState({
+			firstDayPosition: this.props.initial_month.firstDayPosition,
+			daysInMonth: this.props.initial_month.daysInMonth
+		},this.fillMonth);
 	}
 
 	render(){		
@@ -170,12 +156,16 @@ class Calendar extends Component {
 					meses,
 					draw_current_month,
 					initial_month,
-					fill_month} = fjReducers;
+					fill_month,
+					change_month,
+					calc_new_month} = fjReducers;
 		return {select_date,
 					meses,
 					draw_current_month,
 					initial_month,
-					fill_month}
+					fill_month,
+					change_month,
+					calc_new_month}
   }
   
   export default connect(mapStatetoProps,actions)(Calendar);

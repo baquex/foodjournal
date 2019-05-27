@@ -3,7 +3,9 @@ import {
     SELECT_DATE,
     HANDLE_LOGIN_INPUT,
     DRAW_CURRENT_MONTH,
-    FILL_MONTH
+    FILL_MONTH,
+    CHANGE_MONTH,
+    CALC_NEW_MONTH
 } from './actionTypes';
 
 export const loginUser = (userInfo) =>{
@@ -37,6 +39,20 @@ export const draw_current_month = () => {
 export const fill_month = () => {
     return {
         type: FILL_MONTH,
+        payload: ''
+    }
+}
+
+export const change_month = (direction) => {
+    return {
+        type: CHANGE_MONTH,
+        payload: direction
+    }
+}
+
+export const calc_new_month = () => {
+    return {
+        type: CALC_NEW_MONTH,
         payload: ''
     }
 }
