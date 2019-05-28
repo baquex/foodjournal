@@ -80,7 +80,7 @@ function loginUser(state,action){
 }
 
 function select_date(state,action){
-	console.log(`date selected: ${action.payload}`);
+	console.log(`date selected: ${action.payload},${state.meses[state.initial_month.mesActual]},${state.initial_month.yr} `);
 	return {...state}
 }
 
