@@ -31,6 +31,10 @@ class Calendar extends Component {
 		},this.fillMonth);
 	
 	}
+
+	// getDateSelected(e){
+	// 	return (console.log(e))
+	// }
 	
 	fillMonth() {
 		let semana = [];
@@ -46,9 +50,9 @@ class Calendar extends Component {
 
 		for (let i=0;i< (daysInMonth + fdp +1);i++){
 			if (i <= fdp)
-				semana.push(<td key={i} onClick={this.props.select_date}></td>)
+				semana.push(<td key={i}></td>)
 			else {
-					semana.push(<td key={i} onClick={this.props.select_date}>{daysCount}</td>)
+					semana.push(<td key={i} onClick={(e)=>this.props.select_date(e.target.innerHTML)} name={daysCount} value={daysCount}>{daysCount}</td>)
 					daysCount++;
 				}
 		}
