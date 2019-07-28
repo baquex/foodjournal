@@ -8,6 +8,15 @@ body {
 
 .main-container {
     background-color: #F7FFF7; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+footer {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
@@ -21,4 +30,12 @@ h1 {
 .loginLbl {
     font-size: small;
     color: #9CAFB7;
+}
+
+/* footer > section {
+
+} */
+
+footer > section >  h3 {
+    text-align: center;
 }

@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
 //import Day from '../day/day';
 import { Table } from 'reactstrap';
 import {Link} from 'react-router-dom';
 import * as actions from '../../redux/actions';
 import {connect} from 'react-redux';
-import '../../css/calendar.css'
+import '../../css/calendar.css';
+
 
 class Calendar extends Component {
 	constructor(props){
@@ -95,31 +98,9 @@ class Calendar extends Component {
 		
 		
 	return(
-      <div className="container main-container mt-4">
-      <div className="row">
-        <div className="col-12">
-          <img className="logo" src={ require('../../img/logo1.png')} alt="logo"/>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-12 d-flex justify-content-end">
-          <ul className="nav nav-tabs">
-            <li className="nav-item">
-              <a className="nav-link active" href="#">Calendar</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">My Profile</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Contact</a>
-            </li>
-            <li className="nav-item">
-              <span className="nav-link"><Link to='/'>LogOut</Link></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="row mt-5">
+    <div className="container main-container mt-4">
+			<Header />
+			<div className="row mt-5">
         <div className="col-12 d-flex justify-content-center">
           <i className="fas fa-arrow-circle-left arrows" onClick={()=>this.changeMonth('left')}></i>
           <h2 className="text-center d-inline-block mes-arrows">{this.props.meses[this.props.initial_month.mesActual]}</h2>
@@ -149,8 +130,9 @@ class Calendar extends Component {
 						</tbody>
 					</Table>
 				</div>
-				</div>
 			</div>
+			<Footer />
+		</div>
    
     )
   }}

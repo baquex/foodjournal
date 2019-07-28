@@ -16,6 +16,10 @@
 td:hover {
   background: lightgreen; }
 
+i {
+  cursor: pointer;
+}
+
 /* 
 @media screen and (max-width: 768px) {
   .yr-nxt-to-month {
