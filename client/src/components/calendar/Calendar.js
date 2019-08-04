@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import DayModal from '../dayModal/DayModal';
 //import Day from '../day/day';
 import { Table } from 'reactstrap';
 import {Link} from 'react-router-dom';
@@ -19,7 +20,8 @@ class Calendar extends Component {
 		this.state = {
 			mes: [],
 			firstDayPosition: '' ,
-			daysInMonth: ''
+			daysInMonth: '',
+			modalToggle: this.props.modalToggle
 		};
 	}
 
@@ -34,10 +36,6 @@ class Calendar extends Component {
 		},this.fillMonth);
 	
 	}
-
-	// getDateSelected(e){
-	// 	return (console.log(e))
-	// }
 	
 	fillMonth() {
 		let semana = [];
@@ -94,7 +92,8 @@ class Calendar extends Component {
 	render(){		
 
 		console.log(this.props.initial_month);
-		// console.log(this.state);
+		console.log(`this is modalToggle: ${this.props.modalToggle}`);
+		
 		
 		
 	return(
@@ -107,8 +106,8 @@ class Calendar extends Component {
           <span className="yr-nxt-to-month">{this.props.initial_month.yr}</span>
           <i className="fas fa-arrow-circle-right arrows" onClick={()=>this.changeMonth('right')}></i>
         </div>
-      </div>
-			
+      </div>	
+						
 			<div className="row">
 				<div className="col-12">
 					<Table bordered>
@@ -130,8 +129,9 @@ class Calendar extends Component {
 						</tbody>
 					</Table>
 				</div>
-			</div>
-			<Footer />
+			</div> 
+			<Footer />		
+			<DayModal/>
 		</div>
    
     )
@@ -144,14 +144,16 @@ class Calendar extends Component {
 					initial_month,
 					fill_month,
 					change_month,
-					calc_new_month} = fjReducers;
+					calc_new_month,
+					modalToggle } = fjReducers;
 		return {select_date,
 					meses,
 					draw_current_month,
 					initial_month,
 					fill_month,
 					change_month,
-					calc_new_month}
+					calc_new_month,
+					modalToggle}
   }
   
   export default connect(mapStatetoProps,actions)(Calendar);

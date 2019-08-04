@@ -5,7 +5,8 @@ import {
     DRAW_CURRENT_MONTH,
     FILL_MONTH,
     CHANGE_MONTH,
-    CALC_NEW_MONTH
+    CALC_NEW_MONTH, 
+    TOGGLE_MODAL
 } from './actionTypes';
 
 export const loginUser = (userInfo) =>{
@@ -53,6 +54,13 @@ export const change_month = (direction) => {
 export const calc_new_month = () => {
     return {
         type: CALC_NEW_MONTH,
+        payload: ''
+    }
+}
+
+export const toggle_modal = () => {
+    return {
+        type: TOGGLE_MODAL,
         payload: ''
     }
 }

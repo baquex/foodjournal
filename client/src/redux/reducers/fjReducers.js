@@ -1,5 +1,5 @@
 import {
-  LOGIN_USER, SELECT_DATE,HANDLE_LOGIN_INPUT,DRAW_CURRENT_MONTH,CHANGE_MONTH,CALC_NEW_MONTH
+  LOGIN_USER, SELECT_DATE,HANDLE_LOGIN_INPUT,DRAW_CURRENT_MONTH,CHANGE_MONTH,CALC_NEW_MONTH, TOGGLE_MODAL
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -52,7 +52,8 @@ const INITIAL_STATE = {
 		yr:'',
 		firstDayPosition:'',
 		daysInMonth:''
-	}
+	},
+	modalToggle: false
 };
 
 export default (state = INITIAL_STATE, action) =>{
@@ -69,6 +70,8 @@ export default (state = INITIAL_STATE, action) =>{
 			return change_month(state,action);
 		case CALC_NEW_MONTH:
 			return calc_new_month(state);
+		case TOGGLE_MODAL:
+			return toggle_modal(state,action);
 		default: 
 			return state
 	}
@@ -81,7 +84,13 @@ function loginUser(state,action){
 
 function select_date(state,action){
 	console.log(`date selected: ${action.payload},${state.meses[state.initial_month.mesActual]},${state.initial_month.yr} `);
-	return {...state}
+	return {...state, modalToggle: !state.modalToggle}
+}
+
+function toggle_modal(state,action){
+	console.log('togggglin');
+	
+	return {...state, modalToggle: !state.modalToggle}
 }
 
 function handle_login_input(state,action){
