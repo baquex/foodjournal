@@ -6,7 +6,9 @@ import {
     FILL_MONTH,
     CHANGE_MONTH,
     CALC_NEW_MONTH, 
-    TOGGLE_MODAL
+    TOGGLE_MODAL,
+    ADD_ITEM,
+    HANDLE_ITEM_INPUT
 } from './actionTypes';
 
 export const loginUser = (userInfo) =>{
@@ -62,6 +64,18 @@ export const toggle_modal = () => {
     return {
         type: TOGGLE_MODAL,
         payload: ''
+    }
+}
+export const addItem = () => {
+    return {
+        type: ADD_ITEM,
+        payload: ''
+    }
+}
+export const handleItemInput = (itemInfo) => {
+    return {
+        type: HANDLE_ITEM_INPUT,
+        payload: itemInfo
     }
 }
 

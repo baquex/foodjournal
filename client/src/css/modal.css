@@ -1,3 +1,7 @@
+.item-entry-form {
+  margin: 25px 0px;
+}
+
 .modal {
   position: absolute;
   top: 0;
@@ -22,11 +26,12 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-}
-
-.modal-btn > .nxt-btn {
   margin-right: 20px;
 }
+
+/* .modal-btn > .nxt-btn {
+  margin-right: 20px;
+} */
 
 .options > input {
   margin: 10px;
@@ -38,4 +43,9 @@
 
 .hidden {
   visibility: hidden;
+}
+
+.center-btns {
+  align-items: center;
+  justify-content: center;
 }

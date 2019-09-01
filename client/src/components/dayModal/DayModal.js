@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, ButtonGroup} from 'reactstrap';
+import {Button, ButtonGroup, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import * as actions from '../../redux/actions';
 import {connect} from 'react-redux';
 
@@ -9,6 +9,7 @@ class DayModal extends Component {
     this.state = { cSelected: [], 
                     mealType:'' 
                   }
+                  
 
     this.selectMealType = this.selectMealType.bind(this);
   }
@@ -20,40 +21,65 @@ class DayModal extends Component {
 
   showForm(){
     this.setState({ formType: this.state.mealType })
+    console.log(`this is mealType: ${this.state.mealType}`);
+    
   }
 
-  toggle(){
+  cancelBtn(){
     this.setState({ mealType: null, formType: null}, this.props.toggle_modal);    
   }
 
+  backBtn(){
+    this.setState({formType: null})
+  }
+
   render(){
-    
+    // console.log(`all meals: ${JSON.stringify(this.props.meals)}`);
+        
   return(
     <div className={`modal ${this.props.modalToggle ? "": "hidden"} `}>
       <div className={`modal-content container ${!this.state.formType ? "": "hidden"} `}>
         <h3>What meal will you have?</h3>
         <ButtonGroup className="options">
-          <Button color="primary" onClick={() => this.selectMealType("Breakfast")} active={this.state.mealType === "Breakfast"}>Breakfast</Button><br/>
-          <Button color="primary" onClick={() => this.selectMealType("Lunch")} active={this.state.mealType === "Lunch"}>Lunch</Button><br/>
-          <Button color="primary" onClick={() => this.selectMealType("Dinner")} active={this.state.mealType === "Dinner"}>Dinner</Button><br/>
-          <Button color="primary" onClick={() => this.selectMealType("Snack")} active={this.state.mealType === "Snack"}>Snack</Button><br/>
+          <Button color="primary" onClick={() => this.selectMealType("breakfast")} active={this.state.mealType === "breakfast"}>Breakfast</Button><br/>
+          <Button color="primary" onClick={() => this.selectMealType("lunch")} active={this.state.mealType === "lunch"}>Lunch</Button><br/>
+          <Button color="primary" onClick={() => this.selectMealType("dinner")} active={this.state.mealType === "dinner"}>Dinner</Button><br/>
+          <Button color="primary" onClick={() => this.selectMealType("snack")} active={this.state.mealType === "snack"}>Snack</Button><br/>
         </ButtonGroup>
         <p>Selected: {this.state.mealType}</p>
         <div className="modal-btn">
-          <Button className="nxt-btn" color="success" onClick={()=>this.showForm()}>Next</Button>
+          <Button className="modal-btn" color="success" onClick={()=>this.showForm()}>Next</Button>
+          <Button className="modal-btn" color="danger" onClick={()=>this.cancelBtn()}>Cancel</Button>
         </div>
       </div>
-      <div className={`modal-content ${this.state.formType ? "": "hidden"} `}>
-          <h1>Congrats, You are in the {`${this.state.formType}`} section!</h1>
-          <div className="modal-btn">
-            <Button color="success">Save</Button>
-            <Button color="danger" onClick={()=>this.toggle()}>Cancel</Button>
-          </div>
-      </div>
-      {/* <div className={`modal-content ${(this.state.formType === "Breakfast") ? "": "hidden"} `}>
-          <h1>Congrats, You are in the Breakfast section!</h1>
+      <div className={`modal-content container ${this.state.formType ? "": "hidden"} `}>
+        <div className="row item-entry-form">
+          <h2>What did you eat?</h2>
+          <InputGroup>
+            <Input type="text" name={this.state.formType} value={this.props.mealInput || ''} onChange={event => this.props.handleItemInput({name:event.target.name,val:event.target.value})} placeholder="Add an item"/>
+            <InputGroupAddon addonType="append">
+              <Button type="submit" color="success" onClick={this.props.addItem}>Add</Button>
+            </InputGroupAddon>
+          </InputGroup>
         </div>
-        */}
+        <hr/>
+        <div>
+          <ul>
+            {
+              this.state.mealType ? this.props.meals[this.state.mealType].map((item,index)=><li key={index}>{item}</li>) : null
+            }
+          </ul>  
+        </div> 
+
+        <div className="modal-btn center-btns">
+          <Button className="modal-btn" color="info" onClick={()=>this.backBtn()}>Back</Button>
+          <Button className="modal-btn" color="primary">Save</Button>
+          <Button className="modal-btn" color="danger" onClick={()=>this.cancelBtn()}>Cancel</Button>
+        </div>
+
+
+      </div>
+      
     </div>
 
   )}}
@@ -61,9 +87,17 @@ class DayModal extends Component {
 
   const mapStatetoProps = ({fjReducers}) => {
     const {	toggle_modal,
-            modalToggle } = fjReducers;
+            modalToggle,
+            addItem,
+            handleItemInput,
+            mealInput,
+            meals } = fjReducers;
     return { toggle_modal,
-            modalToggle}
+            modalToggle,
+            addItem,
+            handleItemInput,
+            mealInput,
+            meals}
   }
 
 export default connect(mapStatetoProps,actions)(DayModal);

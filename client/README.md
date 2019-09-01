@@ -18,4 +18,13 @@ modal now works (on/off), added toggle_modal() function to reducers with cancel 
 some fields will be visible depending on the mealType
 
 -store field values in DB
-----------------------------------------------------------------------
+------------------Aug 11th------------------------------------------
+nearly completed the modal/todo-app style of adding items the user ate to the list....
+the app does add items to the list and displays them in a list below
+
+- need to seperate the state for each individual month and need to begin adding to the DB
+
+----------------Sept 1st ----------------------------------------------------
+modal2 branch still needs : 
+
+- Modal save button to work, once saved, Cancel buttom must switch to "Exit" txt. 

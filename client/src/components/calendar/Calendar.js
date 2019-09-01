@@ -4,7 +4,7 @@ import Footer from '../footer/Footer';
 import DayModal from '../dayModal/DayModal';
 //import Day from '../day/day';
 import { Table } from 'reactstrap';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import * as actions from '../../redux/actions';
 import {connect} from 'react-redux';
 import '../../css/calendar.css';
@@ -44,7 +44,7 @@ class Calendar extends Component {
 		let fdp = this.props.initial_month.firstDayPosition; // 0 = Monday
 		let daysInMonth = this.props.initial_month.daysInMonth;  //either 30 or 31
 
-		console.log(`fdp and dayInM ${fdp}  **  ${daysInMonth}`);
+		// console.log(`fdp and dayInM ${fdp}  **  ${daysInMonth}`);
 		
 		
 		if (fdp === 6) fdp = -1;
@@ -91,8 +91,8 @@ class Calendar extends Component {
 
 	render(){		
 
-		console.log(this.props.initial_month);
-		console.log(`this is modalToggle: ${this.props.modalToggle}`);
+		// console.log(this.props.initial_month);
+		// console.log(`this is modalToggle: ${this.props.modalToggle}`);
 		
 		
 		
