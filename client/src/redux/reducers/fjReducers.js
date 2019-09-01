@@ -1,34 +1,35 @@
 import {
-  LOGIN_USER, SELECT_DATE,HANDLE_LOGIN_INPUT,DRAW_CURRENT_MONTH,CHANGE_MONTH,CALC_NEW_MONTH
+	LOGIN_USER, SELECT_DATE,HANDLE_LOGIN_INPUT,DRAW_CURRENT_MONTH,CHANGE_MONTH,CALC_NEW_MONTH, TOGGLE_MODAL,
+	ADD_ITEM,HANDLE_ITEM_INPUT
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
 	fecha: '',
-	desayuno: {
-			entrada: '', 
-			principal: '', 
-			postre: '', 
-			drink: '',
-			extra: ''
-	}, 
-	comida: {
-			entrada: '', 
-			principal: '', 
-			postre: '', 
-			drink: '',
-			extra: ''
-	},
-	cena: {
-			entrada: '', 
-			principal: '', 
-			postre: '', 
-			drink: '',
-			extra: ''
-	},
-	colacion:[ {
-		hora: '',
-		items: ''
-	}],
+	// desayuno: {
+	// 		entrada: '', 
+	// 		principal: '', 
+	// 		postre: '', 
+	// 		drink: '',
+	// 		extra: ''
+	// }, 
+	// comida: {
+	// 		entrada: '', 
+	// 		principal: '', 
+	// 		postre: '', 
+	// 		drink: '',
+	// 		extra: ''
+	// },
+	// cena: {
+	// 		entrada: '', 
+	// 		principal: '', 
+	// 		postre: '', 
+	// 		drink: '',
+	// 		extra: ''
+	// },
+	// colacion:[ {
+	// 	hora: '',
+	// 	items: ''
+	// }],
 	meses: [
 			"January",
 			"February",
@@ -52,7 +53,17 @@ const INITIAL_STATE = {
 		yr:'',
 		firstDayPosition:'',
 		daysInMonth:''
-	}
+	},
+	modalToggle: false,
+	meals: {
+		breakfast:[], 
+		lunch: [],
+		dinner: [],
+		snack:[]
+	},
+	mealInput: null,
+	mealType:''
+
 };
 
 export default (state = INITIAL_STATE, action) =>{
@@ -69,23 +80,35 @@ export default (state = INITIAL_STATE, action) =>{
 			return change_month(state,action);
 		case CALC_NEW_MONTH:
 			return calc_new_month(state);
+		case TOGGLE_MODAL:
+			return toggle_modal(state,action);
+		case ADD_ITEM:
+				return addItem(state,action);
+		case HANDLE_ITEM_INPUT:
+				return handleItemInput(state,action);
 		default: 
 			return state
 	}
 }
 
 function loginUser(state,action){
-	console.log(`user logged in: ${JSON.stringify(state.login_data)}`);
+	// console.log(`user logged in: ${JSON.stringify(state.login_data)}`);
 	return {...state, login_data: {email:'',password:''}}
 }
 
 function select_date(state,action){
-	console.log(`date selected: ${action.payload},${state.meses[state.initial_month.mesActual]},${state.initial_month.yr} `);
-	return {...state}
+	// console.log(`date selected: ${action.payload},${state.meses[state.initial_month.mesActual]},${state.initial_month.yr} `);
+	return {...state, modalToggle: !state.modalToggle}
+}
+
+function toggle_modal(state,action){
+	// console.log('togggglin');
+	
+	return {...state, modalToggle: !state.modalToggle}
 }
 
 function handle_login_input(state,action){
-	console.log(action);
+	// console.log(action);
 	return {...state, login_data: {...state.login_data, [action.payload.name]: action.payload.val}}
 	
 }
@@ -130,3 +153,17 @@ function calc_new_month (state){
 	return {...state, initial_month:{...state.initial_month, firstDayPosition: fdp, daysInMonth: daysInMonth}}
 }
 
+function addItem(state,action){
+	console.log(`this is mealInput: ${state.mealInput}`);
+
+	if (state.mealInput !== '' && state.mealInput !== null && state.mealInput !== "Add an item"){
+		state.meals[state.mealType].push(state.mealInput);
+		return {...state, mealInput: ''}
+	}
+	else return state;
+	}
+
+function handleItemInput(state,action){
+	state.mealType = action.payload.name;
+	return {...state, mealInput: action.payload.val }
+}

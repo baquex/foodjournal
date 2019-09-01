@@ -1,0 +1,51 @@
+.item-entry-form {
+  margin: 25px 0px;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.7);
+}
+.modal-content{
+  padding: 3em;
+  position: fixed;
+}
+
+.modal-content > h3 {
+  text-align: center;
+}
+
+.modal-btn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+/* .modal-btn > .nxt-btn {
+  margin-right: 20px;
+} */
+
+.options > input {
+  margin: 10px;
+}
+
+.options > .active {
+  font-weight: bolder;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.center-btns {
+  align-items: center;
+  justify-content: center;
+}
