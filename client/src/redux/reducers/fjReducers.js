@@ -93,6 +93,11 @@ export default (state = INITIAL_STATE, action) =>{
 
 function loginUser(state,action){
 	// console.log(`user logged in: ${JSON.stringify(state.login_data)}`);
+
+
+	/* LOGIN LOGIC*/
+
+
 	return {...state, login_data: {email:'',password:''}}
 }
 
