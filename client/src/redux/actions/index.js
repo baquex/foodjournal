@@ -8,7 +8,9 @@ import {
     CALC_NEW_MONTH, 
     TOGGLE_MODAL,
     ADD_ITEM,
-    HANDLE_ITEM_INPUT
+    HANDLE_ITEM_INPUT,
+    HANDLE_REGISTER_INPUT,
+    REGISTER_USER
 } from './actionTypes';
 
 export const loginUser = (userInfo) =>{
@@ -28,6 +30,13 @@ export const select_date = (dateSelected) => {
 export const handle_login_input = (input) => {
     return {
         type: HANDLE_LOGIN_INPUT,
+        payload: input
+    }
+}
+
+export const handle_register_input = (input) => {
+    return {
+        type: HANDLE_REGISTER_INPUT,
         payload: input
     }
 }
@@ -72,10 +81,17 @@ export const addItem = () => {
         payload: ''
     }
 }
-export const handleItemInput = (itemInfo) => {
+export const handle_item_input = (itemInfo) => {
     return {
         type: HANDLE_ITEM_INPUT,
         payload: itemInfo
+    }
+}
+
+export const register_user = (regUserInfo) => {
+    return {
+        type: REGISTER_USER,
+        payload: regUserInfo
     }
 }
 

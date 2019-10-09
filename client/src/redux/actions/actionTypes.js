@@ -7,6 +7,8 @@ export const CHANGE_MONTH = 'change_month';
 export const CALC_NEW_MONTH = 'calc_new_month';
 export const TOGGLE_MODAL = 'toggle_modal';
 export const ADD_ITEM = 'addItem';
-export const HANDLE_ITEM_INPUT = 'handleItemInput';
+export const HANDLE_ITEM_INPUT = 'handle_item_input';
+export const REGISTER_USER = 'register_user';
+export const HANDLE_REGISTER_INPUT = 'handle_register_input';
 
 

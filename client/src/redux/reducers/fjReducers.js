@@ -1,6 +1,6 @@
 import {
 	LOGIN_USER, SELECT_DATE,HANDLE_LOGIN_INPUT,DRAW_CURRENT_MONTH,CHANGE_MONTH,CALC_NEW_MONTH, TOGGLE_MODAL,
-	ADD_ITEM,HANDLE_ITEM_INPUT
+	ADD_ITEM,HANDLE_ITEM_INPUT,HANDLE_REGISTER_INPUT,REGISTER_USER
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -85,7 +85,11 @@ export default (state = INITIAL_STATE, action) =>{
 		case ADD_ITEM:
 				return addItem(state,action);
 		case HANDLE_ITEM_INPUT:
-				return handleItemInput(state,action);
+				return handle_item_input(state,action);
+		case REGISTER_USER:
+				return register_user(state,action);
+		case HANDLE_REGISTER_INPUT:
+			return handle_register_input(state,action);
 		default: 
 			return state
 	}
@@ -93,13 +97,28 @@ export default (state = INITIAL_STATE, action) =>{
 
 function loginUser(state,action){
 	// console.log(`user logged in: ${JSON.stringify(state.login_data)}`);
-
-
 	/* LOGIN LOGIC*/
-
-
 	return {...state, login_data: {email:'',password:''}}
 }
+
+function handle_login_input(state,action){
+	// console.log(action);
+	return {...state, login_data: {...state.login_data, [action.payload.name]: action.payload.val}}
+	
+}
+
+function register_user(state,action){
+	console.log("you wanna register? ");
+	
+	return state
+}
+
+function handle_register_input(state,action){
+	// console.log(action);
+	return {...state, login_data: {...state.login_data, [action.payload.name]: action.payload.val}}
+	
+}
+
 
 function select_date(state,action){
 	// console.log(`date selected: ${action.payload},${state.meses[state.initial_month.mesActual]},${state.initial_month.yr} `);
@@ -110,12 +129,6 @@ function toggle_modal(state,action){
 	// console.log('togggglin');
 	
 	return {...state, modalToggle: !state.modalToggle}
-}
-
-function handle_login_input(state,action){
-	// console.log(action);
-	return {...state, login_data: {...state.login_data, [action.payload.name]: action.payload.val}}
-	
 }
 
 function draw_current_month(state){
@@ -168,7 +181,8 @@ function addItem(state,action){
 	else return state;
 	}
 
-function handleItemInput(state,action){
+function handle_item_input(state,action){
 	state.mealType = action.payload.name;
 	return {...state, mealInput: action.payload.val }
 }
+

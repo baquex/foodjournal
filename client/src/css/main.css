@@ -35,6 +35,16 @@ h1 {
     color: #9CAFB7;
 }
 
+.regLbl {
+    cursor: pointer;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.regLbl:hover {
+    text-decoration: underline;
+}
+
 footer > section >  h3 {
     text-align: center;
 }

@@ -56,7 +56,7 @@ class DayModal extends Component {
         <div className="row item-entry-form">
           <h2>What did you eat?</h2>
           <InputGroup>
-            <Input type="text" name={this.state.formType} value={this.props.mealInput || ''} onChange={event => this.props.handleItemInput({name:event.target.name,val:event.target.value})} placeholder="Add an item"/>
+            <Input type="text" name={this.state.formType} value={this.props.mealInput || ''} onChange={event => this.props.handle_item_input({name:event.target.name,val:event.target.value})} placeholder="Add an item"/>
             <InputGroupAddon addonType="append">
               <Button type="submit" color="success" onClick={this.props.addItem}>Add</Button>
             </InputGroupAddon>
@@ -89,13 +89,13 @@ class DayModal extends Component {
     const {	toggle_modal,
             modalToggle,
             addItem,
-            handleItemInput,
+            handle_item_input,
             mealInput,
             meals } = fjReducers;
     return { toggle_modal,
             modalToggle,
             addItem,
-            handleItemInput,
+            handle_item_input,
             mealInput,
             meals}
   }

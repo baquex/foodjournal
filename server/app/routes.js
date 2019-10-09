@@ -38,31 +38,20 @@ module.exports = function(app, jwt,database,mysql){
     });
   });
 
-  app.get('/auth', verifyToken, function(req, res){
-    
-    //ERROR, CANNOT CONNECT TO THE DB..... CHECK THIS...
-    // const connection = mysql.createConnection({database});  
-    // const connection = mysql.createConnection({
-      
-    //     host: 'localhost', 
-    //     user: 'foodjournal',
-    //     password: 'scammacs',
-    //     database: 'foodjournal'
-    
-    // });  
-    
-    connection.query('select * from users', function(err, resp, fields){
+  //Auth test, gets all users from users table, no token validation
+  app.get('/authTest', function(req, res){
+    const connection = mysql.createConnection({...database});  
+  
+    connection.query('select * from users', function(err, resp){
       if (err) throw err;
       else {
         res.send({
-          resp,
-          fields
+          resp
         });
       }
-      connection.destroy();
     });
-    
-    
+
+    connection.end();    
   });
 
 
